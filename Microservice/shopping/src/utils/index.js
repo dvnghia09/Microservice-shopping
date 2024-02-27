@@ -5,9 +5,9 @@ const amqplib = require("amqplib");
 const {
   APP_SECRET,
   EXCHANGE_NAME,
-  CUSTOMER_SERVICE,
+  SHOPPING_SERVICE,
   MSG_QUEUE_URL,
-  QUEUE_NAME,
+  QUEUE_NAME
 } = require("../config");
 
 //Utility functions
@@ -57,8 +57,18 @@ module.exports.FormateData = (data) => {
   }
 };
 
+module.exports.PublishCustomerEvent = async (payload) => {
+  axios.post("http://localhost:8000/customer/app-events/", {
+    payload,
+  });
+
+  //     axios.post(`${BASE_URL}/customer/app-events/`,{
+  //         payload
+  //     });
+};
 
 //Message Broker
+
 module.exports.CreateChannel = async () => {
   try {
     const connection = await amqplib.connect(MSG_QUEUE_URL);
@@ -70,15 +80,15 @@ module.exports.CreateChannel = async () => {
   }
 };
 
-// module.exports.PublishMessage = (channel, service, msg) => {
-//   channel.publish(EXCHANGE_NAME, service, Buffer.from(msg));
-//   console.log("Sent: ", msg);
-// };
+module.exports.PublishMessage = (channel, service, msg) => {
+  channel.publish(EXCHANGE_NAME, service, Buffer.from(msg));
+  console.log("Sent: ", msg);
+};
 
 module.exports.SubscribeMessage = async (channel, service) => {
   const appQueue = await channel.assertQueue(QUEUE_NAME);
 
-  channel.bindQueue(appQueue.queue, EXCHANGE_NAME, CUSTOMER_SERVICE);
+  channel.bindQueue(appQueue.queue, EXCHANGE_NAME, SHOPPING_SERVICE);
 
   channel.consume(
     appQueue.queue,
@@ -93,27 +103,4 @@ module.exports.SubscribeMessage = async (channel, service) => {
       noAck: true,
     }
   ); 
-
-
-
-
-  // await channel.assertExchange(EXCHANGE_NAME, "direct", { durable: true });
-  // const q = await channel.assertQueue("", { exclusive: true });
-  // console.log(` Waiting for messages in queue: ${q.queue}`);
-
-  // channel.bindQueue(q.queue, EXCHANGE_NAME, CUSTOMER_SERVICE);
-
-  // channel.consume(
-  //   q.queue,
-  //   (msg) => {
-  //     if (msg.content) {
-  //       console.log("the message is:", msg.content.toString());
-  //       service.SubscribeEvents(msg.content.toString());
-  //     }
-  //     console.log("[X] received");
-  //   },
-  //   {
-  //     noAck: true,
-  //   }
-  // );
 };

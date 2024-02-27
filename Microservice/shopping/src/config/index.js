@@ -5,8 +5,8 @@ const dotEnv = require("dotenv");
 //   dotEnv.config({ path: configFile });
 // } else {
 // }
-dotEnv.config();
 
+dotEnv.config();
 module.exports = {
   PORT: process.env.PORT,
   DB_URL: process.env.MONGODB_URI,
@@ -15,5 +15,5 @@ module.exports = {
   MSG_QUEUE_URL: process.env.MSG_QUEUE_URL,
   CUSTOMER_SERVICE: "customer_service",
   SHOPPING_SERVICE: "shopping_service",
-  QUEUE_NAME: 'CUSTOMER_QUEUE'
+  QUEUE_NAME: 'SHOPPING_QUEUE'
 };

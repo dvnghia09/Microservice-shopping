@@ -1,0 +1,6 @@
+{"level":"error","message":"Fri Jan 05 2024 15:18:24 GMT+0700 (Indochina Time)-{\"expose\":true,\"statusCode\":400,\"status\":400,\"body\":\"{\\n    \\\"ids\\\":[\\n        \\\"658c3090a1adda0e9c225fbb\\\",\\n    ]    \\n}\",\"type\":\"entity.parse.failed\"}","private":true}
+{"level":"error","message":"Fri Jan 05 2024 15:18:37 GMT+0700 (Indochina Time)-{\"expose\":true,\"statusCode\":400,\"status\":400,\"body\":\"{\\n    \\\"ids\\\":[\\n        \\\"658c3090a1adda0e9c225fbb\\\",\\n    ]    \\n}\",\"type\":\"entity.parse.failed\"}","private":true}
+{"level":"error","message":"Fri Jan 05 2024 15:23:05 GMT+0700 (Indochina Time)-{\"name\":\"Data Not found\",\"statusCode\":500,\"isOperational\":true}","private":true}
+{"level":"error","message":"Mon Jan 08 2024 23:15:08 GMT+0700 (Indochina Time)-{\"name\":\"Data Not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Mon Jan 08 2024 23:16:54 GMT+0700 (Indochina Time)-{\"name\":\"Data Not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Mon Jan 08 2024 23:18:54 GMT+0700 (Indochina Time)-{\"name\":\"Data Not found\",\"statusCode\":{},\"isOperational\":true}","private":true}

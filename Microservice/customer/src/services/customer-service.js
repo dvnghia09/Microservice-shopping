@@ -111,9 +111,10 @@ class CustomerService {
     }
 
     async AddToWishlist(customerId, product){
+        console.log(customerId)
         try {
             const wishlistResult = await this.repository.AddWishlistItem(customerId, product);        
-           return FormateData(wishlistResult);
+            return FormateData(wishlistResult);
     
         } catch (err) {
             throw new APIError('Data Not found', err)
@@ -140,6 +141,10 @@ class CustomerService {
 
     async SubscribeEvents(payload){
  
+        console.log('Triggering.... Customer Events')
+
+        payload = JSON.parse(payload)
+
         const { event, data } =  payload;
 
         const { userId, product, order, qty } = data;
